@@ -31,11 +31,10 @@ import { Button } from "@/components/ui/button";
 export const DashboardUserButton = () => {
   const router = useRouter();
   const { data, isPending } = authClient.useSession();
+  const isMobile = useIsMobile();
   if (isPending || !data?.user) {
     return null;
   }
-
-  const isMobile = useIsMobile();
 
   const onLogout = async () => {
     await authClient.signOut({
